@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Projet_Semestre_2</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Google-Style-Login.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean-1.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/reveal-nav-on-scroll.css">
+    <link rel="stylesheet" href="assets/css/Section-Title.css">
+    <link rel="stylesheet" href="assets/css/Social-Icons.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <header style="background: rgb(241,247,252);">
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean-search" style="height: 56px;background: var(--bs-gray-dark);color: #2c2c33;">
+            <div class="container"><a class="navbar-brand" href="#" style="color: rgb(255,255,255);">CAP 2.0</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="../../index.html" style="color: rgb(255,255,255);">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../courses.html" style="color: rgb(255,255,255);">Courses</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="../../account.html" style="color: rgb(255,255,255);">Compte</a></li>
+                    </ul>
+                    <form class="me-auto search-form" target="_self">
+                        <div class="d-flex align-items-center"><label class="form-label d-flex mb-0" for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field" name="search"></div>
+                    </form><a class="btn btn-light action-button" role="button" href="#" style="margin-right: 5px;height: 50px;padding-top: 10px;">Sign in</a><a class="btn btn-light action-button" role="button" href="#" style="height: 50px;padding-top: 10px;">Sign up</a>
+                </div>
+            </div>
+        </nav>
+        <div id="Signup">
+
+            <section class="login-clean" style="height: 700px;">
+                <form id ="formlr"  action ="./assets/js/traitement.php">
+                    <h2 class="visually-hidden">Sign in Form</h2>
+                    <div class="illustration"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
+                            <path d="M13 4.00894C13.0002 3.45665 12.5527 3.00876 12.0004 3.00854C11.4481 3.00833 11.0002 3.45587 11 4.00815L10.9968 12.0116C10.9966 12.5639 11.4442 13.0118 11.9965 13.012C12.5487 13.0122 12.9966 12.5647 12.9968 12.0124L13 4.00894Z" fill="currentColor"></path>
+                            <path d="M4 12.9917C4 10.7826 4.89541 8.7826 6.34308 7.33488L7.7573 8.7491C6.67155 9.83488 6 11.3349 6 12.9917C6 16.3054 8.68629 18.9917 12 18.9917C15.3137 18.9917 18 16.3054 18 12.9917C18 11.3348 17.3284 9.83482 16.2426 8.74903L17.6568 7.33481C19.1046 8.78253 20 10.7825 20 12.9917C20 17.41 16.4183 20.9917 12 20.9917C7.58172 20.9917 4 17.41 4 12.9917Z" fill="currentColor"></path>
+                        </svg></div>
+                    <div class="mail"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+                    <div class="password"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+                    <div class="password"><input class="form-control" type="password" name="password2" placeholder="Confirm Password"></div>
+                    <div id="class-form-checkbox" style="margin-top: 10px;margin-left: 12px;">
+                        <div class="form-check" style="color: rgb(111,122,133);font-size: 12px;">
+                            <input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Click here to validate your account !&nbsp;</label>
+                        </div>
+                    </div>
+                    <div id="valid" style="margin-left: 15px;margin-top: 20px;margin-right: 21px;"></div>
+                    <a class="forgot" href="index.html" style="margin-top: 24px;margin-bottom: -16px;">if you have an account, please sign in !</a>
+                    <button id ="button" class="btn btn-primary d-block w-100" type="button" onclick="SignUp()" >Sign In</button>
+                </form>
+            </section>
+        </div>
+        <div class="dropdown-menu show"  id="bton" style="display: none;margin-right: 840px">
+        <button class="dropdown-item"><a  href="#" onclick="initialisation(1)">Course 1</a></button>
+        <button class="dropdown-item"><a  href="#" onclick="initialisation(2)">Course 2</a></button>
+        <button class="dropdown-item"><a  href="#" onclick="initialisation(3)">Course 3</a></button>
+        </div>
+        <div id="carte" style="height: 500px"></div>
+
+    </header>
+   <-- Bibliotheque JQUERY>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="assets/js/Login.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Y32T_PJHZxYcK3BJYJFNwSl6cuvLXpo&amp;"></script>
+
+</body>
+
+</html>
