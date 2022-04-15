@@ -1,3 +1,123 @@
+function SignIn()
+{
+    var inputs = document.getElementsByTagName("input");
+    var checkbox = document.getElementsByClassName('form-check-input');
+    var checkboxLabel = document.getElementsByClassName('form-check-label');
+    var erreur = document.getElementById("valid");
+    var formulaire = document.getElementById("formlr");
+    var button = document.getElementById("yanis");
+    var test = document.getElementById("Signup");
+    var Boutons = document.getElementById("bton");
+    const arobaze = /[@]/g;
+    const miniscule = /[a-z]/g;
+    const minuscule = /a-z||A-Z/g;
+    const nameMail = /gmail|outlook|msn|yahoo|icloud|aol|live/g;
+    const num = /[1-9]/g;
+    const Ndomaine = /.fr|.com|.org/g;
+    const point = /[.]/g;
+    var verifMail = false;
+    var verifPass = false;
+    var verifbox = false;
+    var verif = false;
+    var mail = inputs[1];
+    var password = inputs[2];
+
+
+    if (mail.value.match(miniscule)) //l'adresse doit comporter des miniscule
+    {
+        if (mail.value.match(arobaze)) //l'adresse doit comporter un @
+        {
+            if (mail.value.match(minuscule)) //l'adresse doit comporter des Nmail
+            {
+                if (mail.value.match(Ndomaine)) {
+                    erreur.innerHTML = "";
+                    mail.style.borderColor = "green";
+                    verifMail = true;
+                }
+                else {
+                    erreur.style.color = "red";
+                    erreur.innerHTML = "Veuillez taper le nom de domaine ! ";
+                }
+            }
+            else {
+                erreur.style.color = "red";
+                erreur.innerHTML = "Veuillez vérifier le mail ! ";
+            }
+        }
+        else {
+            erreur.style.color = "red";
+            erreur.innerHTML = "Veuillez taper le @ ! ";
+        }
+    }
+
+    else {
+        mail.style.borderColor = "red";
+        verifMail = false;
+        erreur.style.color = "red";
+        erreur.innerHTML = "Veuillez taper le mail ! ";
+    }
+
+    if (password.value.match(miniscule))
+    {
+        if (password.value.match(num))
+        {
+            password.style.borderColor = "green";
+            verifpass = true;
+        }
+    }
+    else
+    {
+        password.style.borderColor = "red";
+        verifpass = false ;
+    }
+
+
+    if (verifMail == true && verifPass == true)
+    {
+        console.log("oui");
+        var form= "email="+mail.value+"&password="+password.value; //On envoi les donnée des input au php
+
+        $.ajax({
+            url: "./assets/js/traitement.php",
+            dataType : "JSON",
+            data :  form,
+            method: "GET",
+            success:function(msg) {
+                console.log(msg);
+                console.log(msg.messageAccount.status_id);
+
+                var statut_id = msg.messageAccount.status_id;
+                var reponse = msg.messageAccount;
+
+                switch (statut_id) {
+
+                    case 0:
+                        erreur.style.color = "red";
+                        erreur.style.fontSize = "20px";
+                        erreur.innerHTML = "ERROR, le mail " + reponse.email + " est déja utilisé";
+                        break;
+                    case 1:
+                        test.innerHTML = "";
+                        test.style.fontSize = "40px";
+                        test.innerHTML = "Bienvenue " + reponse.email + ", nous sommes ravie de te revoir";
+                        Boutons.style.display = "block";
+
+                        initialisation();
+                        break;
+                }
+
+            }
+
+
+        });
+        //
+
+    }
+}
+
+
+
+
 
 function SignUp()
 {    var inputs = document.getElementsByTagName("input");
@@ -148,17 +268,14 @@ function SignUp()
                   switch (statut_id) {
 
                         case 0:
-                            erreur.style.color = "red";
+                            erreur.style.color = "green";
                             erreur.style.fontSize = "20px";
-                            erreur.innerHTML = "ERROR, le mail " + reponse.email + " est déja utilisé";
+                            erreur.innerHTML = "Veuillez vous connectez avec le mail suivant : " + mail.value + ".";
                             break;
                       case 1:
-                            test.innerHTML = "";
-                            test.style.fontSize = "40px";
-                            test.innerHTML = "Bienvenue " + reponse.email + ", nous sommes ravie de te revoir";
-                            Boutons.style.display = "block";
-
-                            initialisation();
+                          erreur.style.color = "red";
+                          erreur.style.fontSize = "20px";
+                          erreur.innerHTML = "Votre compte existe déjà ! ";
                             break;
                     }
 
@@ -169,10 +286,7 @@ function SignUp()
        //
 
     }
-    else {
-        verif = false;
-        erreur.style.color = "red";
-    }
+
 
 
 

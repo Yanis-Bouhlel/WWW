@@ -1,6 +1,4 @@
 <?php
-
-
             $mail = $_GET["email"];
             $pass = $_GET["password"];
 
@@ -16,27 +14,17 @@
             // accéder à l'élément approprié
             for ($i=0;$i<3;$i++)
             {
-                if ($mail == $obj[$i]-> email)
+                if ($mail == $obj[$i]->email)
                 {
-                    $status_id = 0 ;
-
                     if ($pass == $obj[$i]-> password )
                     {
                         $status_id = 1 ;
-                        // the message
-
-
                    }
-
                     else
                     {
                         $status_id = 0 ;
-
                     }
                 }
-
-
-
             }
 
             $myarray = array("messageAccount"=>array("status_id"=>$status_id,"email"=>"$mail"));
@@ -47,7 +35,7 @@
 /* Header du mail */
 
 
-//Le mail ne s'nvoie pas a cause d'une erreur du serveur !!
+//Le mail ne s'envoie pas a cause d'une erreur du serveur !!
 
 /*$header="MIME-Version: 1-0\r\n";
 $header.='From:"webminiprojet.com"<support@webminiprojet.com>'."\n";
