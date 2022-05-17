@@ -1,9 +1,0 @@
-{
-  "messageAccount": {
-    "status_id": 1,
-    "email": true
-  },
-  "exclude": [
-    "node_modules"
-  ]
-}
